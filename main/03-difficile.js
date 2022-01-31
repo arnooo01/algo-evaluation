@@ -15,12 +15,30 @@
  * 
  */
  function mouvementsFou(ligne, colonne) {
-    return [
-        [ligne - 1, colonne - 1],
-        [ligne, colonne],
-        [ligne + 1, colonne + 1],
-    ]
+    var newTable = [];
+    var k = 1;
+    while(ligne+k <= 8 && colonne+k <= 8) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    k = 1;
+    while(ligne+k <= 8 && colonne-k >= 1) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    k = 1;
+    while(ligne-k >= 1 && colonne-k >= 1) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    k = 1;
+    while(ligne-k >= 1 && colonne+k <= 8) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    return newTable
 }
+console.log(mouvementsFou(6, 6))
 
 /**
  * Ce log ne fait pas partie de l'exercice, ne vous en préoccupez donc pas, mais il vous aidera à afficher vos tests avec un joli formattage.
@@ -48,8 +66,19 @@
  * *********
  * 
  */
-function pyramide(hauteur) {
-    return ["    *    ", "   ***   ", "  *****  ", " ******* ", "*********"]
-}
+ function pyramide(hauteur) {
+    var newTable = [];
+    for (var i = 0; i < hauteur; i++) {
+        var starCount = i*2+1
+        var lengthBase = (hauteur-1)*2+1
+        var spaces = (lengthBase - starCount)/2
 
-pyramide(5).forEach(e => console.log(`${e}`))
+        var str = ''
+        str += ' '.repeat(spaces)
+        str += '*'.repeat(starCount)
+        str += ' '.repeat(spaces)
+        newTable.push(str)
+    }
+    return newTable
+}
+pyramide(5).forEach(e => console.log(e))
