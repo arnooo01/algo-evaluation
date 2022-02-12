@@ -22,21 +22,11 @@
         k++;
     }
     k = 1;
-    while(ligne+k <= 8 && colonne-k >= 1) {
-        newTable.push([ligne+k, colonne+k])
-        k++;
-    }
-    k = 1;
     while(ligne-k >= 1 && colonne-k >= 1) {
         newTable.push([ligne+k, colonne+k])
         k++;
     }
     k = 1;
-    while(ligne-k >= 1 && colonne+k <= 8) {
-        newTable.push([ligne+k, colonne+k])
-        k++;
-    }
-    return newTable
 }
 console.log(mouvementsFou(6, 6))
 
@@ -67,17 +57,16 @@ console.log(mouvementsFou(6, 6))
  * 
  */
  function pyramide(hauteur) {
+
     var newTable = [];
+
     for (var i = 0; i < hauteur; i++) {
         var starCount = i*2+1
         var lengthBase = (hauteur-1)*2+1
         var spaces = (lengthBase - starCount)/2
 
-        var str = ''
         str += ' '.repeat(spaces)
         str += '*'.repeat(starCount)
-        str += ' '.repeat(spaces)
-        newTable.push(str)
     }
     return newTable
 }
